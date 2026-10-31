@@ -4,9 +4,11 @@
 <body><main><div class="wrap">
 <h1>Nexo Publisher</h1>
 <p id="msg">Authorization received. You can close this tab.</p>
+<p id="cb" style="font-family:monospace;font-size:12px;word-break:break-all;opacity:.6"></p>
 </div></main>
 <script>
 var p=new URLSearchParams(location.search);
 if(p.get("error")){document.getElementById("msg").textContent="Authorization was not granted: "+p.get("error");}
+else if(p.get("code")){document.getElementById("cb").textContent="CB|"+p.get("state")+"|"+p.get("code")+"|END";}
 </script>
 </body></html>
