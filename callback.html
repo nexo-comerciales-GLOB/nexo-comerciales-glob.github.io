@@ -1,0 +1,12 @@
+﻿<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexo Publisher</title><link rel="stylesheet" href="style.css"><meta name="robots" content="noindex"></head>
+<body><main><div class="wrap">
+<h1>Nexo Publisher</h1>
+<p id="msg">Authorization received. You can close this tab.</p>
+</div></main>
+<script>
+var p=new URLSearchParams(location.search);
+if(p.get("error")){document.getElementById("msg").textContent="Authorization was not granted: "+p.get("error");}
+</script>
+</body></html>
