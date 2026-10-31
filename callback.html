@@ -1,14 +1,21 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nexo Publisher</title><link rel="stylesheet" href="style.css"><meta name="robots" content="noindex"></head>
 <body><main><div class="wrap">
 <h1>Nexo Publisher</h1>
-<p id="msg">Authorization received. You can close this tab.</p>
-<p id="cb" style="font-family:monospace;font-size:12px;word-break:break-all;opacity:.6"></p>
+<p id="msg">Connecting your TikTok account...</p>
 </div></main>
 <script>
-var p=new URLSearchParams(location.search);
-if(p.get("error")){document.getElementById("msg").textContent="Authorization was not granted: "+p.get("error");}
-else if(p.get("code")){document.getElementById("cb").textContent="CB|"+p.get("state")+"|"+p.get("code")+"|END";}
+(async () => {
+  const p = new URLSearchParams(location.search), msg = document.getElementById("msg");
+  if (p.get("error")) { msg.textContent = "Authorization was not granted: " + p.get("error"); return; }
+  if (!p.get("code") || p.get("state") !== sessionStorage.getItem("nx_state")) { msg.textContent = "Invalid or expired authorization. Please try again from Nexo Publisher."; return; }
+  sessionStorage.removeItem("nx_state");
+  try {
+    const r = await (await fetch("http://127.0.0.1:8787/api/exchange", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ code: p.get("code") }) })).json();
+    if (r.ok) { location.replace("publisher.html"); return; }
+    msg.textContent = "Connection failed: " + JSON.stringify(r.error);
+  } catch (e) { msg.textContent = "The local Nexo Publisher service is not running."; }
+})();
 </script>
 </body></html>
