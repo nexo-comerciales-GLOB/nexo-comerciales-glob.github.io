@@ -1,0 +1,35 @@
+/* Nexo Commerce : bleu nuit, or, Poppins. Colonne de lecture unique, bandeau d'en-tete pleine largeur. */
+:root{--bg:#F6F4EE;--surface:#FFFFFF;--fg:#14233D;--muted:#55627A;--gold:#B8892E;--line:#DCD6C8;--band:#0F1E36;--band-fg:#F6F4EE;--band-gold:#E0B252;
+--display:"Poppins",system-ui,sans-serif;--body:"Source Serif 4",Georgia,serif;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B172B;--surface:#11213B;--fg:#ECE7DB;--muted:#9BA8BF;--gold:#E0B252;--line:#24375A;--band:#0F1E36;--band-fg:#ECE7DB;--band-gold:#E0B252;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B172B;--surface:#11213B;--fg:#ECE7DB;--muted:#9BA8BF;--gold:#E0B252;--line:#24375A;--band:#0F1E36;--band-fg:#ECE7DB;--band-gold:#E0B252;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.65}
+.band{background:var(--band);color:var(--band-fg)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header .wrap{padding-block:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.02em;color:var(--band-fg);text-decoration:none}
+.brand b{color:var(--band-gold);font-weight:700}
+.brand svg{width:54px;height:22px;flex:none}
+nav{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--display);font-size:14px}
+nav a{color:var(--band-fg);text-decoration:none;opacity:.85}
+nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline;text-decoration-color:var(--band-gold)}
+.hero .wrap{padding-block:56px 64px}
+.eyebrow{font-family:var(--display);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--band-gold);margin:0 0 12px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.12;margin:0 0 18px;text-wrap:balance}
+.hero p.lead{max-width:60ch;margin:0;font-size:19px;color:var(--band-fg);opacity:.9}
+main .wrap{padding-block:48px 64px}
+h2{font-family:var(--display);font-size:22px;line-height:1.25;margin:40px 0 10px;text-wrap:balance}
+h2:first-child{margin-top:0}
+p,li{max-width:65ch}
+ul{padding-left:1.2em}
+.meta{font-family:var(--display);font-size:13px;color:var(--muted);letter-spacing:.02em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.acc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.acc h3{font-family:var(--display);font-size:16px;margin:0 0 4px}
+.acc p{margin:0;color:var(--muted);font-size:15px}
+.lang{font-family:var(--display);font-size:12px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+a{color:var(--gold)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px;font-family:var(--display);font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+footer a{color:var(--muted)}
