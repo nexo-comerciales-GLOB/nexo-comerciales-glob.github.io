@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nexo Publisher</title><meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap"><link rel="stylesheet" href="style.css">
@@ -8,7 +8,7 @@
 .btn{font-family:var(--display);font-weight:600;font-size:15px;border:0;border-radius:10px;padding:12px 20px;cursor:pointer;background:var(--band);color:var(--band-fg)}
 .btn.gold{background:var(--band-gold);color:#0F1E36}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.creator{display:flex;align-items:center;gap:14px;font-family:var(--display)}
+.creator{display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-family:var(--display)}
 .creator img{width:52px;height:52px;border-radius:50%;border:2px solid var(--band-gold)}
 .creator b{display:block;font-size:16px}.creator span{font-size:13px;color:var(--muted)}
 label.f{display:block;font-family:var(--display);font-size:13px;font-weight:600;margin:16px 0 6px}
@@ -67,7 +67,7 @@ video{width:100%;max-width:200px;aspect-ratio:9/16;background:#000;border-radius
   <p class="status" id="status" role="status"></p>
 </div>
 </div></main>
-<footer><div class="wrap"><span>© 2026 Nexo Commerce · Toulouse, France</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+<footer><div class="wrap"><span>Â© 2026 Nexo Commerce Â· Toulouse, France</span><span><a href="terms.html">Terms</a> Â· <a href="privacy.html">Privacy</a></span></div></footer>
 <script>
 const L = "http://127.0.0.1:8787";
 const $ = id => document.getElementById(id);
@@ -89,7 +89,7 @@ async function load() {
   const r = await (await fetch(L + "/api/creator")).json();
   if (!r.data || !r.data.creator_nickname) return;
   creator = r.data;
-  $("who").innerHTML = '<div class="creator"><img alt="" src="' + creator.creator_avatar_url + '"><div><b>' + creator.creator_nickname + '</b><span>@' + creator.creator_username + ' · posting as this account</span></div></div>';
+  $("who").innerHTML = '<div class="creator"><img alt="" src="' + creator.creator_avatar_url + '"><div><b>' + creator.creator_nickname + '</b><span>@' + creator.creator_username + ' Â· posting as this account</span></div></div>';
   for (const p of creator.privacy_level_options) { const o = document.createElement("option"); o.value = p; o.textContent = LABEL[p] || p; $("privacy").appendChild(o); }
   if (creator.comment_disabled) { $("c-comment").disabled = true; }
   if (creator.duet_disabled) { $("c-duet").disabled = true; }
